@@ -249,7 +249,7 @@ return;
 }
 void ExportGalaxy(struct SageGalaxies *Output, int id)
 {
-  printf("%g,%g,%g,%g,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[i].Mvir,Output[i].Rvir);
+  printf("%g,%g,%g,%g,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir,Output[id].Rvir);
 }
 
 int main()
