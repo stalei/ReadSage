@@ -247,18 +247,21 @@ printf("~~~~~~~~~~~~~~~~~~~~~~∮∮∮∮∮∮∮∮∮∮∮∮~~~~~~~~~~~~~~
 return;
 
 }
-void ExportGalaxy(struct SageGalaxies *Output, int id)
+void ExportGalaxy(int snap,struct SageGalaxies *Output, int id)
 {
-  printf("%g,%g,%g,%g,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir,Output[id].Rvir);
+  printf("%g,%g,%g,%g,%g,%d\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir,Output[id].Rvir,snap);
 }
 
 int main()
 {
-sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/TagAnalysis");
-ReadSage(264);
-int i;
-for(i=0;i<NumGalaxies;i++)
-  ExportGalaxy(SageOutput,i);
+sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_out");
+int i,s, LastSnap=264;
 
+for(s=0;s<LastSnap;s++)
+{
+  ReadSage(s);
+for(i=0;i<NumGalaxies;i++)
+  ExportGalaxy(s,SageOutput,i);
+}
   return 0;
 }
