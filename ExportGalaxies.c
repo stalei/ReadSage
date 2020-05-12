@@ -86,6 +86,7 @@ struct SageGalaxies
  float infallVvir;
  float infallVmax;
  float r_heat;
+ float Stars;
 
 }*SageOutput;
 //typedef struct SageGalaxies
@@ -254,10 +255,10 @@ void ExportGalaxy(int snap,struct SageGalaxies *Output, int id)
 
 int main()
 {
-sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_out");
-int i,s, LastSnap=264;
+sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_outStars");
+int i,s, LastSnap=264,FirstSnap=36;
 
-for(s=0;s<LastSnap;s++)
+for(s=FirstSnap;s<LastSnap;s++)
 {
   ReadSage(s);
 for(i=0;i<NumGalaxies;i++)
