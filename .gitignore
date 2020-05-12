@@ -1,3 +1,6 @@
+*.csv
+sage_out/
+
 # Prerequisites
 *.d
 
