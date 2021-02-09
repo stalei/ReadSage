@@ -6,7 +6,6 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // This code is distributed as is and there is no warranty or technical support
-// © Shahram Talei @ 2019
 // Reading stored data in a sage file
 //
 //
@@ -21,7 +20,7 @@
 //#include <ctype.h>
 
 ////////////////////////////////////////////////////////////
-//// Definitios and variables
+//// Definitions and variables
 char SageDir[500];
 struct Path_Names
 {
@@ -38,11 +37,11 @@ struct SageGalaxies
   int   FileNr;
   long long   GalaxyIndex;
   int   HaloIndex;
-  int   FOFHaloIndex;
+  int   FOFHaloIndex; //SubhaloIndex;
   int   TreeIndex;
 
   int   SnapNum;
-  int   CentralGal;
+  int   CentralGal; //GalIndex;
   float CentralMvir;
 
    //properties of subhalo at the last time this galaxy was a central galaaxy
@@ -250,15 +249,17 @@ return;
 }
 void ExportGalaxy(int snap,struct SageGalaxies *Output, int id)
 {
-  printf("%g,%g,%g,%g,%g,%d\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir,Output[id].Rvir,snap);
+  printf("%g,%g,%g,%g,%g,%d,%g\n",Output[id].Pos[0], Output[id].Pos[1],Output[id].Pos[2],Output[id].Mvir*(1.0e10),Output[id].Rvir,snap,Output[id].StellarMass);
 }
 
 int main()
 {
-sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_outStars");
-int i,s, LastSnap=264,FirstSnap=36;
+//sprintf(SageDir,"/home/shahram/Desktop/Research/3_Tagging/ReadSage/sage_out");
+sprintf(SageDir,"/media/shahram/SD/Sample100Mpc/838/sage_out");
+//sprintf(SageDir,"sage_out");
+int i,s, LastSnap=264,FirstSnap=49;
 
-for(s=FirstSnap;s<LastSnap;s++)
+for(s=FirstSnap;s<=LastSnap;s++)
 {
   ReadSage(s);
 for(i=0;i<NumGalaxies;i++)
